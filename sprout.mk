@@ -88,7 +88,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/init.sprout.usb.rc:root/init.sprout.usb.rc
 
 # Correct bootanimation size for the screen
-TARGET_SCREEN_HEIGHT := 854
+TARGET_SCREEN_HEIGHT := 800
 TARGET_SCREEN_WIDTH := 480
 	
 PRODUCT_COPY_FILES += \

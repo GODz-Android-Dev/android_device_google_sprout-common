@@ -379,11 +379,18 @@ on post-fs-data
     chmod 0660 /dev/kd_camera_hw
     chmod 0660 /dev/kd_camera_flashlight
     chmod 0660 /dev/kd_camera_hw_bus2
-    chmod 0660 /dev/DW9714AF
-    chmod 0660 /dev/GAF001AF
-    chmod 0660 /dev/GAF002AF
-    chmod 0660 /dev/GAF008AF
+    chmod 0660 /dev/FM50AF
+    chmod 0660 /dev/IMX091AF
+    chmod 0660 /dev/BU6424AF
+    chmod 0660 /dev/OV5648AF_DARLING
+    chmod 0660 /dev/OV5648AF_TRULY
+    chmod 0660 /dev/OV5648AF_SUNWIN
+    chmod 0660 /dev/OV5648AF_DARLING_ZL
+    chmod 0660 /dev/OV8825AF
+    chmod 0660 /dev/OV8826AF
     chmod 0660 /dev/CAM_CAL_DRV
+    chmod 0660 /dev/EEPROM_M24C08F
+    chmod 0660 /dev/DW9714A
 
     chown system camera /dev/camera-sysram
     chown system camera /dev/camera-isp
@@ -391,11 +398,18 @@ on post-fs-data
     chown system camera /dev/kd_camera_hw
     chown system camera /dev/kd_camera_flashlight
     chown system camera /dev/kd_camera_hw_bus2
-    chown system camera /dev/DW9714AF
-    chown system camera /dev/GAF001AF
-    chown system camera /dev/GAF002AF
-    chown system camera /dev/GAF008AF
+    chown system camera /dev/FM50AF
+    chown system camera /dev/IMX091AF
+    chown system camera /dev/BU6424AF
+    chown system camera /dev/OV5648AF_DARLING
+    chown system camera /dev/OV5648AF_TRULY
+    chown system camera /dev/OV5648AF_SUNWIN
+    chown system camera /dev/OV5648AF_DARLING_ZL
+    chown system camera /dev/OV8825AF
+    chown system camera /dev/OV8826AF
     chown system camera /dev/CAM_CAL_DRV
+    chown system camera /dev/EEPROM_M24C08F
+    chown system camera /dev/DW9714A
 
     #MATV
     chmod 0660 /dev/MATV
@@ -427,8 +441,9 @@ on post-fs-data
     chmod 666 /dev/mali
     chown system graphics /dev/mali
 
-
-
+    #BT SCO CVSD, for MT6582 CVSD codec on AP
+    chmod 0660 /dev/ebc
+    chown system media /dev/ebc														
     #sbchk
     mkdir /data/sec 0750 system system
 
@@ -441,6 +456,7 @@ on post-fs-data
 #/dev/ttyMT2 for Connectivity BT/FM/GPS usage
     chmod 0660 /dev/ttyMT2
     chown system system /dev/ttyMT2
+    chown system system /proc/secmem0
     chown bluetooth bluetooth /dev/stpbt
 	chown system system /dev/block/mmcblk0p2
 
@@ -592,7 +608,7 @@ on property:vold.decrypt=trigger_reset_main
 
 on property:vold.decrypt=trigger_restart_min_framework
     start start_modem
-
+    start msensord
 on property:vold.decrypt=trigger_restart_framework
     start nvram_daemon
     start start_modem
