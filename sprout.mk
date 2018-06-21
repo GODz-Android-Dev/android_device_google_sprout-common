@@ -124,7 +124,7 @@ PRODUCT_PACKAGES += \
     libsprout_ril_shim \
     libsprout_omx_shim \
     libsprout_camera \
-    libsprout_log_shim
+    libsprout_log_shim 
 
 PRODUCT_PACKAGES += \
     libion \

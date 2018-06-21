@@ -6,7 +6,14 @@ struct xlog_record {
 	int prio;
 };
 
-int __xlog_buf_printf(int bufid, const struct xlog_record *rec, ...) {
+static void init(void) __attribute__ ((constructor));
+
+void init(void)
+{
+}
+
+int __xlog_buf_printf(int bufid, const struct xlog_record *rec, ...)
+{
   va_list args;
   va_start(args, rec);
   LOG_PRI_VA(rec->prio, rec->tag_str, rec->fmt_str, args);
@@ -14,3 +21,7 @@ int __xlog_buf_printf(int bufid, const struct xlog_record *rec, ...) {
 
   return 0;
 }
+
+void dl_unregister_notify_function(void){return;}
+
+void dl_register_notify_function(int (*load_notify_function) (const char *name,uintptr_t address,uintptr_t size ),int (*unload_notify_function) (const char *name, uintptr_t address)){return;}

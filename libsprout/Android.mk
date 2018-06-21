@@ -16,9 +16,14 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
-    sprout_ril.cpp
+    sprout_ril.cpp \
+	ssl.c \
+	wvm.cpp \
+	ui.cpp \
+	mtkaudio.cpp
 
-LOCAL_SHARED_LIBRARIES := libbinder
+LOCAL_C_INCLUDES += frameworks/av/media/mtp/ system/core/include/ frameworks/rs/server/ frameworks/av/include/ hardware/libhardware/include/
+LOCAL_SHARED_LIBRARIES := libbinder libcrypto liblog libstagefright_foundation libui libgui libcutils libutils
 LOCAL_MODULE := libsprout_ril_shim
 LOCAL_MODULE_TAGS := optional
 
@@ -29,7 +34,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := \
     sprout_bionic.cpp
 
-LOCAL_SHARED_LIBRARIES := libbinder
+LOCAL_SHARED_LIBRARIES := libbinder libc
 LOCAL_MODULE := libsprout_omx_shim
 LOCAL_MODULE_TAGS := optional
 
